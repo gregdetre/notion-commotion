@@ -1,5 +1,4 @@
 from typing import Literal, Optional
-from md2notionpage.core import parse_md
 from notion_client import Client
 from urllib.parse import urlparse
 
@@ -170,6 +169,8 @@ def update_page(
 
 
 def notion_blocks_from_markdown(md_txt: str):
+    from md2notionpage.core import parse_md
+
     # probably not necessary any more, because I'm just going to import the html directly in Notion
     converted_blocks = parse_md(md_txt)
     return converted_blocks
