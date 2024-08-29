@@ -402,7 +402,9 @@ def format_property_value(prop: dict[str, Any]) -> str:
         return "Unsupported property type"
 
 
-def process_page_recursively(notion: Client, page_id: str, output_dir: str):
+def process_page_recursively(
+    notion: Client, page_id: str, output_dir: str, database_properties: dict = None
+):
     blocks = get_blocks(notion, page_id)
 
     # Get page title
@@ -410,9 +412,13 @@ def process_page_recursively(notion: Client, page_id: str, output_dir: str):
     title = get_page_title(page)
 
     # Add title as H1 at the top
-    html_content = f"<h1>{title}</h1>\n" + notion_to_html(
-        blocks, notion, output_dir, page_id
-    )
+    html_content = f"<h1>{title}</h1>\n"
+
+    # Add database properties if available
+    if database_properties:
+        html_content += get_database_fields_html(database_properties)
+
+    html_content += notion_to_html(blocks, notion, output_dir, page_id)
 
     # Create a safe filename
     safe_title = get_safe_filename(title)
