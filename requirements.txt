@@ -1,0 +1,23 @@
+# venv location: /Users/greg/.venvs/experim__wordpress_to_notion
+
+beautifulsoup4
+black
+ipykernel
+ipython
+# didn't work via pip
+# loconotion
+lxml
+# md2notion
+md2notionpage
+# for md2notion
+mistletoe
+# for notion-exporter: https://chatgpt.com/c/6f10aa9e-e6d1-4572-8192-843cdefca5c6
+# nest_asyncio
+notion-client
+# notion-exporter
+pendulum
+# for notion4ever
+# sass
+# wp2md
+# trying this out
+# wat-inspector
