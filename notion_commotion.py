@@ -364,7 +364,12 @@ def get_database_fields_html(properties: dict[str, Any]) -> str:
 
 
 def format_property_value(prop: dict[str, Any]) -> str:
-    prop_type = prop["type"]
+    if isinstance(prop, dict) and "type" in prop:
+        prop_type = prop["type"]
+    else:
+        return str(
+            prop
+        )  # Return the property as a string if it's not a dictionary or doesn't have a 'type' key
     if prop_type == "rich_text":
         return rich_text_to_html(prop["rich_text"])
     elif prop_type == "number":
